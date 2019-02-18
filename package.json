@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "description": "Project Euler problem solutions with TypeScript",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "ts-node node_modules/jasmine/bin/jasmine"
+  },
   "keywords": [],
   "author": "Alex Graham",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^11.9.4"
+    "@types/jasmine": "^3.3.9",
+    "@types/node": "^11.9.4",
+    "jasmine": "^3.3.1"
+  },
+  "dependencies": {
+    "typescript": "^3.3.3"
   }
 }
