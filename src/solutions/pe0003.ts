@@ -1,5 +1,6 @@
 
 import * as Sequences from '../sequences'
+import { printBenchmark } from "../benchmark"
 
 function largestPrimeFactor(num: number): number {
   let optimizedThreshold: number = Math.floor(Math.sqrt(num));
@@ -10,4 +11,4 @@ function largestPrimeFactor(num: number): number {
     .pop();
 }
 
-console.log(largestPrimeFactor(600851475143));
+printBenchmark(() => largestPrimeFactor(600851475143));
