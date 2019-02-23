@@ -1,4 +1,4 @@
-import * as Sequences from './sequences'
+import * as Sequence from './sequence'
 import * as Mapper from './mapper'
 
 // returns an array of even numbers
@@ -43,7 +43,7 @@ export function primeFactors(num: number): Array<number> {
   if (num === 1 || num === 0) {
     return [];
   }
-  let primesArr: Array<number> = Sequences.primes(1, num / 2);
+  let primesArr: Array<number> = Sequence.primes(1, num / 2);
   let primeFactorsArr: Array<number> = [];
 
   for (let i: number = 0; i < primesArr.length && num > 1; i++) {
