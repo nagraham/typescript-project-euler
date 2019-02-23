@@ -1,6 +1,6 @@
 
-import * as numbers from '../numbers'
-import { printBenchmark } from "../benchmark"
+import * as numbers from '../lib/numbers'
+import { printBenchmark } from "../lib/benchmark"
 
 // solve project euler 1
 function multiplesOf3Or5(): number {

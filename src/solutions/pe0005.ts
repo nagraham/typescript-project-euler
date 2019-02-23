@@ -1,6 +1,6 @@
-import { printBenchmark } from "../benchmark"
-import { lowestCommonMultiple } from "../numbers"
-import { range } from "../sequences"
+import { printBenchmark } from "../lib/benchmark"
+import { lowestCommonMultiple } from "../lib/numbers"
+import { range } from "../lib/sequences"
 
 // What is the smallest positive number that is evenly divisible by all
 // of the numbers from 1 to 20?

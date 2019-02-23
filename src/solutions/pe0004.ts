@@ -1,6 +1,6 @@
 
-import { isPalindrome } from "../strings"
-import { printBenchmark } from "../benchmark"
+import { isPalindrome } from "../lib/strings"
+import { printBenchmark } from "../lib/benchmark"
 
 // the largest palindrome made from the product of two 3-digit numbers
 function largestPalindromeProduct() {

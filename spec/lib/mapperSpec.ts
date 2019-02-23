@@ -1,5 +1,5 @@
 import "jasmine";
-import * as Mapper from "../src/mapper";
+import * as Mapper from "../../src/lib/mapper";
 
 describe("countItems", () => {
   describe("with array of duplicated numbers", () => {

@@ -1,6 +1,6 @@
 
-import * as Sequences from '../sequences'
-import { printBenchmark } from "../benchmark"
+import * as Sequences from '../lib/sequences'
+import { printBenchmark } from "../lib/benchmark"
 
 function largestPrimeFactor(num: number): number {
   let optimizedThreshold: number = Math.floor(Math.sqrt(num));

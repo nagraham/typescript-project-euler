@@ -1,5 +1,5 @@
 import "jasmine";
-import * as Strings from "../src/strings";
+import * as Strings from "../../src/lib/strings";
 
 describe("isPalindrome", () => {
   describe("when the string is a palindrome", () => {

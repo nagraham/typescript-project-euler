@@ -1,5 +1,5 @@
 import "jasmine";
-import * as Numbers from "../src/numbers";
+import * as Numbers from "../../src/lib/numbers";
 
 describe("evens", () => {
   describe("with an array of odd and even numbers", () => {

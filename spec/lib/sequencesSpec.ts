@@ -1,5 +1,5 @@
 import "jasmine";
-import * as Sequences from "../src/sequences";
+import * as Sequences from "../../src/lib/sequences";
 
 describe("fibonacci", () => {
   it("returns array with fibonacci numbers not exceeding 'end' value" , () => {
