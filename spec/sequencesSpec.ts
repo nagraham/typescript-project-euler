@@ -36,18 +36,43 @@ describe("primes", () => {
   describe("preconditions", () => {
     describe("when start > end", () => {
       it("throws an Error", () => {
-        expect(() => { Sequences.primes(1, 0) }).toThrowError("Invalid arg: start must be <= end")
+        expect(() => { Sequences.primes(1, 0) }).toThrowError("[primes] invalid arg: start must be <= end")
       });
     });
     describe("when start < 0", () => {
       it("throws an Error", () => {
-        expect(() => { Sequences.primes(-1, 0) }).toThrowError("Invalid arg: arguments must be > 0")
+        expect(() => { Sequences.primes(-1, 0) }).toThrowError("[primes] invalid arg: arguments must be > 0")
       });
     });
     describe("when end < 0", () => {
       it("throws an Error", () => {
-        expect(() => { Sequences.primes(0, -1) }).toThrowError("Invalid arg: arguments must be > 0")
+        expect(() => { Sequences.primes(0, -1) }).toThrowError("[primes] invalid arg: arguments must be > 0");
       });
     });
-  })
-})
+  });
+});
+
+describe("range", () => {
+  describe("with valid start and end", () => {
+    describe("no flag", () => {
+      it("returns inclusive range", () => {
+        expect(Sequences.range(1, 5)).toEqual([1, 2, 3, 4, 5]);
+      });
+    });
+    describe("inclusive flag true", () => {
+      it("returns inclusive range", () => {
+        expect(Sequences.range(1, 5, true)).toEqual([1, 2, 3, 4, 5]);
+      });
+    });
+    describe("inclusive flag false", () => {
+      it("returns exclusive range", () => {
+        expect(Sequences.range(1, 5, false)).toEqual([1, 2, 3, 4]);
+      });
+    });
+  });
+  describe("when the end > start", () => {
+    it("throws an error", () => {
+      expect(() => { Sequences.range(5, 1) }).toThrowError("[range] invalid arg: end must be greater than start");
+    });
+  });
+});

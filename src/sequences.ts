@@ -21,11 +21,11 @@ export function fibonacci(start: number, end: number): Array<number> {
 // Start should be > 0; start should be <= end
 export function primes(start: number, end: number): Array<number> {
   if (start < 0 || end < 0) {
-    throw new Error("Invalid arg: arguments must be > 0");
+    throw new Error("[primes] invalid arg: arguments must be > 0");
   }
 
   if (start > end) {
-    throw new Error("Invalid arg: start must be <= end");
+    throw new Error("[primes] invalid arg: start must be <= end");
   }
 
   let allPrimes: Array<number> = [2];
@@ -55,4 +55,16 @@ export function primes(start: number, end: number): Array<number> {
   }
 
   return sequence;
+}
+
+export function range(start: number, end: number, inclusive = true): Array<number> {
+  if (start > end) {
+    throw new Error("[range] invalid arg: end must be greater than start");
+  }
+  let range: Array<number> = [];
+  for (let i: number = start; i < end; i++) {
+    range.push(i);
+  }
+  if (inclusive) { range.push(end); }
+  return range;
 }
