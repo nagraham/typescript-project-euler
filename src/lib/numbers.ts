@@ -43,7 +43,7 @@ export function primeFactors(num: number): Array<number> {
   if (num === 1 || num === 0) {
     return [];
   }
-  let primesArr: Array<number> = Sequence.primes(1, num / 2);
+  let primesArr: Array<number> = Sequence.primesRange(1, num / 2);
   let primeFactorsArr: Array<number> = [];
 
   for (let i: number = 0; i < primesArr.length && num > 1; i++) {

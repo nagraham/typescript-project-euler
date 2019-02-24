@@ -18,35 +18,48 @@ describe("fibonacci", () => {
 });
 
 describe("primes", () => {
+  it("returns an array prime numbers starting from 2 of the specified quantity", () => {
+    expect(Sequence.primes(10)).toEqual([2, 3, 5, 7, 11, 13, 17, 19, 23, 29]);
+  })
+  it("for size 1 is returns 2", () => {
+    expect(Sequence.primes(1)).toEqual([2]);
+  })
+  it ("returns empty array for sizes less than 1", () => {
+    expect(Sequence.primes(0)).toEqual([]);
+    expect(Sequence.primes(-1)).toEqual([]);
+  })
+})
+
+describe("primesRange", () => {
   describe("from 0 to 20", () => {
     it("returns an array of prime numbers", () => {
-      expect(Sequence.primes(0, 20)).toEqual([2, 3, 5, 7, 11, 13, 17, 19])
+      expect(Sequence.primesRange(0, 20)).toEqual([2, 3, 5, 7, 11, 13, 17, 19])
     });
   });
   describe("when start is a prime and end is a prime", () => {
     it("returns an array of prime numbers including both start and end", () => {
-      expect(Sequence.primes(2, 19)).toEqual([2, 3, 5, 7, 11, 13, 17, 19])
+      expect(Sequence.primesRange(2, 19)).toEqual([2, 3, 5, 7, 11, 13, 17, 19])
     });
   });
   describe("when start is greater than 2", () => {
     it("returns an array of prime numbers including both start and end", () => {
-      expect(Sequence.primes(4, 8)).toEqual([5, 7])
+      expect(Sequence.primesRange(4, 8)).toEqual([5, 7])
     });
   });
   describe("preconditions", () => {
     describe("when start > end", () => {
       it("throws an Error", () => {
-        expect(() => { Sequence.primes(1, 0) }).toThrowError("[primes] invalid arg: start must be <= end")
+        expect(() => { Sequence.primesRange(1, 0) }).toThrowError("[primes] invalid arg: start must be <= end")
       });
     });
     describe("when start < 0", () => {
       it("throws an Error", () => {
-        expect(() => { Sequence.primes(-1, 0) }).toThrowError("[primes] invalid arg: arguments must be > 0")
+        expect(() => { Sequence.primesRange(-1, 0) }).toThrowError("[primes] invalid arg: arguments must be > 0")
       });
     });
     describe("when end < 0", () => {
       it("throws an Error", () => {
-        expect(() => { Sequence.primes(0, -1) }).toThrowError("[primes] invalid arg: arguments must be > 0");
+        expect(() => { Sequence.primesRange(0, -1) }).toThrowError("[primes] invalid arg: arguments must be > 0");
       });
     });
   });

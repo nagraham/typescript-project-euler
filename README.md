@@ -2,7 +2,7 @@
 
 ### Why
 
-I'm in the process learning TypeScript, es2015 style JavaScript, Jasmine, and generally knocking the rust off my brittle JavaScript skills. Project Euler is a source of challenging, bite-sized problems. I've already solved some of these problems in other languages; it's fun to revisit these problems with new solutions in a new language.
+To knock the rust off my JavaScript skill, and learn TypeScript, Jasmine, and possibly some other tools. Project Euler provides a big source of challenging, bite-sized problems to work on. I've already solved some of these problems in other languages, but its fun to revisit them with a new language. 
 
 ### What
 
