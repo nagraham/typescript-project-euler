@@ -2,6 +2,7 @@
 import * as Sequence from '../lib/sequence'
 import { printBenchmark } from "../lib/benchmark"
 
+// Runs in ~60ms
 function largestPrimeFactor(num: number): number {
   let optimizedThreshold: number = Math.floor(Math.sqrt(num));
   // no idea why I need to cast; can't find answer

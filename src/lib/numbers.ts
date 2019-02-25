@@ -1,3 +1,7 @@
+/*
+ * Functions that perform number/math calculations
+*/
+
 import * as Sequence from './sequence'
 import * as Mapper from './mapper'
 
@@ -32,6 +36,14 @@ export function lowestCommonMultiple(numList: Array<number>): number {
   return lcm;
 }
 
+// Given an array of numbers, returns the max number.
+export function maxNum(numbers: Array<number>): number {
+  if (numbers.length === 0) {
+    throw new Error("[maxNum] invalid argument: array cannot be empty");
+  }
+  return numbers.reduce((max, num) => { return Math.max(max, num) }, Number.MIN_SAFE_INTEGER);
+}
+
 // returns an array of the number's prime factors
 // e.g. primeFactors(12) -> [2, 2, 3]
 //
@@ -59,6 +71,53 @@ export function primeFactors(num: number): Array<number> {
   }
 
   return primeFactorsArr;
+}
+
+// Given an array of numbers and some size of a sub-slice, returns a new array containing
+// products of those subslices.
+//
+// This method takes advantage of being able to divide out / multiply in integers to
+// keep the number of operations to a minimum. A more general solution would be to loop
+// over the array, run slice(), and reduce() a product. But that has a guranteed N * M
+// operations where N is the size of the array and M is the size of the slice. In the case
+// of solution 8, this is an order of magnitude in savings (13x). That said, this solution is
+// N * M in the worst case: when the array is completely filled with zeroes. I could probably
+// solve that with an optimization, but I'm lazy.
+//
+// sizeOfSlice: a number whose value is 0 <= X <= series.length
+export function productOfSubSlices(numbers: Array<number>, sizeOfSlice: number): Array<number> {
+  // TODO: parameter checking
+
+  // get the initial product
+  let currentProduct = _productOfSlice(numbers, 0, sizeOfSlice);
+  let products: Array<number> = [currentProduct];
+
+  // the start/end indicies act as a sliding window over the numbers
+  // [2, 3, 4, 5, 6]
+  //  ^        ^      = currentProduct: 24
+  // Divide 2 from 24, multiply in 5, increment
+  // [2, 3, 4, 5, 6]
+  //     ^        ^   = currentProduct: 60
+  let sliceStartIndex: number = 0;
+  let sliceEndIndex: number = sizeOfSlice;
+  while (sliceEndIndex < numbers.length) {
+    // when start is zero, instead of dividing, rebuild the currentProduct
+    if (numbers[sliceStartIndex] === 0) {
+      sliceStartIndex++;
+      currentProduct = _productOfSlice(numbers, sliceStartIndex, sizeOfSlice);
+      sliceEndIndex++;
+    } else {
+      currentProduct /= numbers[sliceStartIndex++];
+      currentProduct *= numbers[sliceEndIndex++];
+    }
+    products.push(currentProduct);
+  }
+
+  return products;
+}
+
+function _productOfSlice(numbers: Array<number>, index: number, sizeOfSlice: number): number {
+  return numbers.slice(index, index + sizeOfSlice).reduce((product, num) => product *= num);
 }
 
 // returns the sum of an array of numbers

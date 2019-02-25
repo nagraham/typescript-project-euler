@@ -3,6 +3,7 @@ import { isPalindrome } from "../lib/strings"
 import { printBenchmark } from "../lib/benchmark"
 
 // the largest palindrome made from the product of two 3-digit numbers
+// Runs in ~80ms
 function largestPalindromeProduct() {
   let max: number = -1;
   for (let i: number = 999; i > 0; i--) {

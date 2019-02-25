@@ -1,3 +1,6 @@
+/*
+ * Functions that perform general mapping functions
+*/
 
 export function countItems(list: Array<any>): Map<any, number> {
   let map: Map<any, number> = new Map<any, number>();

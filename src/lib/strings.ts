@@ -1,3 +1,6 @@
+/*
+ * String-based functions
+*/
 
 // Determines if the given string is a palindrome. Single-character and empty
 // strings will return true.

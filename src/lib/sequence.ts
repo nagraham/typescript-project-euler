@@ -1,3 +1,6 @@
+/*
+ * Functions that return numerical sequences based on an algorithm or special property (fibonacci, primes, sums)
+*/
 
 // Returns an sequence of fibonacci numbers, calculated from start to end.
 export function fibonacci(start: number, end: number): Array<number> {
@@ -16,7 +19,6 @@ export function fibonacci(start: number, end: number): Array<number> {
 
   return sequence;
 }
-
 
 // a function that retrieves the number of primes specified
 export function primes(numOfPrimes: number): Array<number> {

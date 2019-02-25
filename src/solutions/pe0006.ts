@@ -4,6 +4,7 @@ import * as Sequence from '../lib/sequence'
 
 // Find the difference between the sum of the squares of the first one hundred
 // natural numbers and the square of the sum.
+// Runs in ~1ms
 function sumSquareDifference() {
   let range: Array<number> = Sequence.range(1, 100);
   let squareOfSum: number = Math.pow(Numbers.sum(range), 2);
