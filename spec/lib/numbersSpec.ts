@@ -69,6 +69,12 @@ describe("primeFactors", () => {
   });
 });
 
+describe("product", () => {
+  it("calculates the product", () => {
+    expect(Numbers.product([1, 2, 3, 4, 5])).toEqual(120);
+  });
+});
+
 describe("productOfSubSlices", () => {
   describe("when slice size is 1", () => {
     it("returns each number unchanged", () => {
@@ -100,6 +106,26 @@ describe("productOfSubSlices", () => {
       it("it handles the zero", () => {
         expect(Numbers.productOfSubSlices([1, 2, 3, 4, 0], 3)).toEqual([6, 24, 0]);
       });
+    });
+  });
+});
+
+describe("pythagoreanTriplet", () => {
+  describe("when valid args provided", () => {
+    it("returns a tuple containing the Pythagorean Triple", () => {
+      expect(Numbers.pythagoreanTriplet(2, 1)).toEqual([3, 4, 5]);
+    });
+  });
+  describe("when n >= m", () => {
+    it("throws an Error", () => {
+      expect(() => { Numbers.pythagoreanTriplet(1, 2) }).toThrowError("[pythagoreanTriplet] invalid arg: n must be less than m");
+      expect(() => { Numbers.pythagoreanTriplet(1, 1) }).toThrowError("[pythagoreanTriplet] invalid arg: n must be less than m");
+    });
+  });
+  describe("when n or m >= 0", () => {
+    it("throws an Error", () => {
+      expect(() => { Numbers.pythagoreanTriplet(0, -1) }).toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
+      expect(() => { Numbers.pythagoreanTriplet(1, 0) }).toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
     });
   });
 });
