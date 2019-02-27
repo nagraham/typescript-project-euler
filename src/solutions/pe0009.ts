@@ -1,5 +1,5 @@
 import { printBenchmark } from "../lib/benchmark";
-import * as Numbers from "../lib/numbers"
+import * as Numbers from "../lib/numbers";
 
 /**
  * A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
@@ -12,7 +12,7 @@ import * as Numbers from "../lib/numbers"
 function specialPythagoreanTriplet(): [number, Numbers.Triplet] {
   for (let m: number = 2; m <= 100; m++) {
     for (let n: number = 1; n < m; n++) {
-      let triplet: Numbers.Triplet = Numbers.pythagoreanTriplet(m, n);
+      const triplet: Numbers.Triplet = Numbers.pythagoreanTriplet(m, n);
       if (Numbers.sum(triplet) === 1000) {
         return [Numbers.product(triplet), triplet];
       }

@@ -1,5 +1,5 @@
-import { printBenchmark } from '../lib/benchmark'
-import * as Sequence from '../lib/sequence'
+import { printBenchmark } from "../lib/benchmark";
+import * as Sequence from "../lib/sequence";
 
 // What is the 10001st prime number?
 // Runs in ~8ms

@@ -15,6 +15,7 @@
     "jasmine": "^3.3.1"
   },
   "dependencies": {
-    "typescript": "^3.3.3"
+    "tslint": "^5.13.0",
+    "typescript": "^3.3.3333"
   }
 }
