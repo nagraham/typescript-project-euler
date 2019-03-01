@@ -2,16 +2,16 @@ import { printBenchmark } from "../lib/benchmark";
 import { Direction } from "../lib/direction";
 import { Matrix } from "../lib/matrix";
 import * as Numbers from "../lib/numbers";
+import * as Strings from "../lib/strings";
 
 /**
  *  What is the greatest product of four adjacent numbers in the same direction
  * (up, down, left, right, or diagonally) in the 20×20 grid?
  *
- * Runs in ~6ms
+ * Runs in ~10ms
  */
 function largestProductInGrid(numberSequenceAsString: string): number {
-  const numbers: number[] = numberSequenceAsString.split(" ").map((s) => Number(s));
-  const matrix: Matrix = new Matrix(20, 20, numbers);
+  const matrix: Matrix = new Matrix(20, 20, Strings.toNumbers(numberSequenceAsString, " "));
   const directions: Direction[] = [
     Direction.Right,
     Direction.Down,
@@ -21,10 +21,10 @@ function largestProductInGrid(numberSequenceAsString: string): number {
 
   let product: number = -1;
   matrix.each((row, col, ignored) => {
-    for (let i: number = 0; i < directions.length; i++) {
-      const vectorProduct = Numbers.product(matrix.getVector(row, col, 4, directions[i]));
+    directions.forEach((direction) => {
+      const vectorProduct = Numbers.product(matrix.getVector(row, col, 4, direction));
       product = Math.max(product, vectorProduct);
-    }
+    });
   });
   return product;
 }

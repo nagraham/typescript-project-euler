@@ -37,7 +37,7 @@ export class Matrix {
   /**
    * Iterates over each element in the Matrix, and provides to the given
    * callback function the row number, column number, and value for the current
-   * position in the matrix. 
+   * position in the matrix.
    *
    * @param {Function(row: number, col: number, value: number)} callback
    */

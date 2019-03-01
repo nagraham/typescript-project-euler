@@ -1,11 +1,11 @@
 import { printBenchmark } from "../lib/benchmark";
 import * as Numbers from "../lib/numbers";
+import * as Strings from "../lib/strings";
 
 // Find the thirteen adjacent digits in the 1000-digit number that have the greatest product.
 // Runs in ~1ms
 function largestProductInSeries(series: string): number {
-  const seriesAsNumberArray: number[] = series.split("").map((char) => Number(char));
-  return Numbers.maxNum(Numbers.productOfSubSlices(seriesAsNumberArray, 13));
+  return Numbers.maxNum(Numbers.productOfSubSlices(Strings.toNumbers(series), 13));
 }
 
 const reallyBigNumberAsString: string = "" +
