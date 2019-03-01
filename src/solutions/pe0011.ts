@@ -20,7 +20,7 @@ function largestProductInGrid(numberSequenceAsString: string): number {
   ];
 
   let product: number = -1;
-  matrix.each((row, col, ignored) => {
+  matrix.forEach((row, col, ignored) => {
     directions.forEach((direction) => {
       const vectorProduct = Numbers.product(matrix.getVector(row, col, 4, direction));
       product = Math.max(product, vectorProduct);

@@ -28,11 +28,11 @@ describe("constructor", () => {
   });
 });
 
-describe("each", () => {
+describe("forEach", () => {
   const matrix: Matrix = new Matrix(2, 2, [1, 2, 3, 4]);
   it("provides each row, col, and value", () => {
     const results: number[] = [];
-    matrix.each((row, col, value) => {
+    matrix.forEach((row, col, value) => {
       results.push(row, col, value);
     });
     expect(results).toEqual([0, 0, 1, 0, 1, 2, 1, 0, 3, 1, 1, 4]);

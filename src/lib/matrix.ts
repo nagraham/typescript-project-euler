@@ -41,7 +41,7 @@ export class Matrix {
    *
    * @param {Function(row: number, col: number, value: number)} callback
    */
-  public each(callback: (row: number, col: number, value: number) => void) {
+  public forEach(callback: (row: number, col: number, value: number) => void) {
     for (let r: number = 0; r < this.row; r++) {
       for (let c: number = 0; c < this.col; c++) {
         callback(r, c, this.matrix[r][c]);
