@@ -13,6 +13,31 @@ export function evens(nums : Array<number>): Array<number> {
 }
 
 /**
+ * Returns the given number's factors as a sorted array.
+ *
+ * factors(24) -> [1, 2, 3, 4, 6, 8, 12, 24]
+ */
+export function factors(num: number): Array<number> {
+  if (num === 0) { return []; }
+  if (num === 1) { return [1]; }
+
+  const smallerFactors: number[] = [1];
+  const largerFactors: number[] = [num];
+
+  for (let i: number = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      smallerFactors.push(i);
+      const divisor: number = num / i;
+      if (divisor != i) {
+        largerFactors.unshift(num / i);
+      }
+    }
+  }
+
+  return smallerFactors.concat(largerFactors);
+}
+
+/**
  * determine the Lowest Common Multiple (LCM) for a given set of numbers.
  * e.g. lowestCommonMultiple([45, 30]) -> 90
  *      lowestCommonMultiple([1, 2, 3, 4, 5, 6]) -> 60

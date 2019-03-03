@@ -9,12 +9,21 @@ describe("evens", () => {
   });
 });
 
-describe("evens", () => {
-  describe("with an array of numbers", () => {
-    it("returns the sum", () => {
-      expect(Numbers.sum([1, 2, 3, 4, 5])).toEqual(15);
+describe("factors", () => {
+  it("returns an array of the numbers factors", () => {
+    const valuesToExpectedResults: Map<number, number[]> = new Map([
+      [0, []],
+      [1, [1]],
+      [7, [1, 7]],
+      [9, [1, 3, 9]],
+      [24, [1, 2, 3, 4, 6, 8, 12, 24]],
+      [100, [1, 2, 4, 5, 10, 20, 25, 50, 100]]
+    ]);
+
+    valuesToExpectedResults.forEach((expectedResult, value) => {
+      expect(Numbers.factors(value)).toEqual(expectedResult);
     });
-  });
+  })
 });
 
 describe("lowestCommonMultiple", () => {
@@ -126,6 +135,14 @@ describe("pythagoreanTriplet", () => {
     it("throws an Error", () => {
       expect(() => { Numbers.pythagoreanTriplet(0, -1) }).toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
       expect(() => { Numbers.pythagoreanTriplet(1, 0) }).toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
+    });
+  });
+});
+
+describe("sum", () => {
+  describe("with an array of numbers", () => {
+    it("returns the sum", () => {
+      expect(Numbers.sum([1, 2, 3, 4, 5])).toEqual(15);
     });
   });
 });
