@@ -23,19 +23,18 @@ function superLargeSum(bigDigits: string): [string, string] {
     let columnSum: number = Numbers.sum(matrix.getVector(0, currColumn, 100, Direction.Down));
     columnSum += carry;
     finalSum.unshift(columnSum % 10);
-     // numbers divide to floats; use bitwise because 1) it's cool; 2) it's faster than Math.floor()
-     // https://stackoverflow.com/questions/4228356/integer-division-with-remainder-in-javascript
-    carry = (columnSum / 10) >> 0;
+     // Use floor() b/c JS numbers divide to floats
+    carry = Math.floor(columnSum / 10);
   }
 
   // NOTE: factor into "Numbers.toArray(num)" if I ever reuse this logic
   while (carry > 0) {
     finalSum.unshift(carry % 10);
-    carry = (carry / 10) >> 0;
+    carry = Math.floor(carry / 10);
   }
 
   // returns both the answer, and the full sum
-  return [finalSum.join("").slice(0, 10), finalSum.join(""), ];
+  return [finalSum.join("").slice(0, 10), finalSum.join("")];
 }
 
 const bigDigitsAsString = `
@@ -138,7 +137,6 @@ const bigDigitsAsString = `
 77158542502016545090413245809786882778948721859617
 72107838435069186155435662884062257473692284509516
 20849603980134001723930671666823555245252804609722
-53503534226472524250874054075591789781264330331690
-`
+53503534226472524250874054075591789781264330331690`;
 
 printBenchmark(() => superLargeSum(bigDigitsAsString));
