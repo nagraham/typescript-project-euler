@@ -11,7 +11,6 @@ import * as Numbers from "../lib/numbers";
 function highlyDivisibleTriangularNumber(): number {
   let currentTriangleNum: number = 1;
   let currentNum: number = 2;
-  let hasNotFoundHighlyDivisibleTriangleNum: boolean = true;
 
   while (Numbers.factors(currentTriangleNum).length < 500) {
     currentTriangleNum += currentNum;

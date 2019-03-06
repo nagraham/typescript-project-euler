@@ -23,7 +23,7 @@ function longestCollatzSequence(): [number, number] {
   let numberWithLongestSequence: number = -1;
 
   for (let i: number = 2; i <= 1000000; i++) {
-    let len: number = Sequence.collatz(i).length;
+    const len: number = Sequence.collatz(i).length;
     if (max < len) {
       max = len;
       numberWithLongestSequence = i;

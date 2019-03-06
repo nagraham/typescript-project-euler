@@ -2,13 +2,13 @@
  * Functions that perform number/math calculations
 */
 
-import * as Sequence from './sequence'
-import * as Mapper from './mapper'
+import * as Mapper from "./mapper";
+import * as Sequence from "./sequence";
 
 /**
  * Returns a new array containing on the even numbers from the given array.
  */
-export function evens(nums : Array<number>): Array<number> {
+export function evens(nums: number[]): number[] {
   return nums.filter((num) => num % 2 === 0);
 }
 
@@ -17,7 +17,7 @@ export function evens(nums : Array<number>): Array<number> {
  *
  * factors(24) -> [1, 2, 3, 4, 6, 8, 12, 24]
  */
-export function factors(num: number): Array<number> {
+export function factors(num: number): number[] {
   if (num === 0) { return []; }
   if (num === 1) { return [1]; }
 
@@ -28,7 +28,7 @@ export function factors(num: number): Array<number> {
     if (num % i === 0) {
       smallerFactors.push(i);
       const divisor: number = num / i;
-      if (divisor != i) {
+      if (divisor !== i) {
         largerFactors.unshift(num / i);
       }
     }
@@ -42,17 +42,17 @@ export function factors(num: number): Array<number> {
  * e.g. lowestCommonMultiple([45, 30]) -> 90
  *      lowestCommonMultiple([1, 2, 3, 4, 5, 6]) -> 60
  */
-export function lowestCommonMultiple(numList: Array<number>): number {
-  let maxPrimeFactorsCount: Map<number, number> = new Map<number, number>();
+export function lowestCommonMultiple(numList: number[]): number {
+  const maxPrimeFactorsCount: Map<number, number> = new Map<number, number>();
 
   numList.forEach((num) => {
     // get the count of prime factors (e.g. 12 -> {2: 2, 3: 1} )
-    let primeFactorCount: Map<number, number> = Mapper.countItems(primeFactors(num));
+    const primeFactorCount: Map<number, number> = Mapper.countItems(primeFactors(num));
 
     // compare the prime factor counts with existing, replace with highest count
     primeFactorCount.forEach((value, key) => {
       if (maxPrimeFactorsCount.has(key)) {
-        maxPrimeFactorsCount.set(key, <number> Math.max(value, <number> maxPrimeFactorsCount.get(key)));
+        maxPrimeFactorsCount.set(key, Math.max(value, maxPrimeFactorsCount.get(key) as number) as number);
       } else {
         maxPrimeFactorsCount.set(key, value);
       }
@@ -68,11 +68,11 @@ export function lowestCommonMultiple(numList: Array<number>): number {
 /**
  * Given an array of numbers, returns the max number.
  */
-export function maxNum(numbers: Array<number>): number {
+export function maxNum(numbers: number[]): number {
   if (numbers.length === 0) {
     throw new Error("[maxNum] invalid argument: array cannot be empty");
   }
-  return numbers.reduce((max, num) => { return Math.max(max, num) }, Number.MIN_SAFE_INTEGER);
+  return numbers.reduce((max, num) => Math.max(max, num), Number.MIN_SAFE_INTEGER);
 }
 
 /**
@@ -81,25 +81,25 @@ export function maxNum(numbers: Array<number>): number {
  *
  * the number should be a positive integer
  */
-export function primeFactors(num: number): Array<number> {
+export function primeFactors(num: number): number[] {
   if (num < 0) {
     throw new Error("[primeFactors] invalid arg: num should be positive number");
   }
   if (num === 1 || num === 0) {
     return [];
   }
-  let primesArr: Array<number> = Sequence.primesRange(1, num / 2);
-  let primeFactorsArr: Array<number> = [];
+  const primesArr: number[] = Sequence.primesRange(1, num / 2);
+  const primeFactorsArr: number[] = [];
 
   for (let i: number = 0; i < primesArr.length && num > 1; i++) {
-    let currPrime: number = primesArr[i];
-    while (num % currPrime == 0) {
+    const currPrime: number = primesArr[i];
+    while (num % currPrime === 0) {
       num /= currPrime;
       primeFactorsArr.push(currPrime);
     }
   }
 
-  if (primeFactorsArr.length == 0) {
+  if (primeFactorsArr.length === 0) {
     primeFactorsArr.push(num);
   }
 
@@ -111,8 +111,8 @@ export function primeFactors(num: number): Array<number> {
  *
  * @params {Array<number>}
  */
-export function product(numbers: Array<number>): number {
-  return numbers.reduce((product, num) => product *= num);
+export function product(numbers: number[]): number {
+  return numbers.reduce((prod, num) => prod *= num);
 }
 
 /**
@@ -130,12 +130,12 @@ export function product(numbers: Array<number>): number {
  * @param {Array<number>} numbers the numbers to get subslices from
  * @param {number} sizeOfSlice a number whose value is 0 <= X <= series.length
  */
-export function productOfSubSlices(numbers: Array<number>, sizeOfSlice: number): Array<number> {
+export function productOfSubSlices(numbers: number[], sizeOfSlice: number): number[] {
   // TODO: parameter checking
 
   // get the initial product
   let currentProduct = _productOfSlice(numbers, 0, sizeOfSlice);
-  let products: Array<number> = [currentProduct];
+  const products: number[] = [currentProduct];
 
  /*
   * the start/end indicies act as a sliding window over the numbers
@@ -163,7 +163,7 @@ export function productOfSubSlices(numbers: Array<number>, sizeOfSlice: number):
   return products;
 }
 
-function _productOfSlice(numbers: Array<number>, index: number, sizeOfSlice: number): number {
+function _productOfSlice(numbers: number[], index: number, sizeOfSlice: number): number {
   return product(numbers.slice(index, index + sizeOfSlice));
 }
 
@@ -189,9 +189,9 @@ export function pythagoreanTriplet(m: number, n: number): Triplet {
     throw new Error("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
   }
   return [
-    (m**2 - n**2),
+    (m ** 2 - n ** 2),
     (2 * m * n),
-    (m**2 + n**2)
+    (m ** 2 + n ** 2),
   ];
 }
 
@@ -200,6 +200,6 @@ export function pythagoreanTriplet(m: number, n: number): Triplet {
  *
  * @params {Array<number>}
  */
-export function sum(nums : Array<number>): number {
-  return nums.reduce((sum, num) => sum + num);
+export function sum(nums: number[]): number {
+  return nums.reduce((reducedSum, num) => reducedSum + num);
 }

@@ -17,21 +17,21 @@ describe("factors", () => {
       [7, [1, 7]],
       [9, [1, 3, 9]],
       [24, [1, 2, 3, 4, 6, 8, 12, 24]],
-      [100, [1, 2, 4, 5, 10, 20, 25, 50, 100]]
+      [100, [1, 2, 4, 5, 10, 20, 25, 50, 100]],
     ]);
 
     valuesToExpectedResults.forEach((expectedResult, value) => {
       expect(Numbers.factors(value)).toEqual(expectedResult);
     });
-  })
+  });
 });
 
 describe("lowestCommonMultiple", () => {
   describe("when the array contains positive integers", () => {
-      it("returns the lowest common multiple", () => {
-        expect(Numbers.lowestCommonMultiple([45, 30])).toEqual(90);
-        expect(Numbers.lowestCommonMultiple([3, 4, 1, 6, 2, 5])).toEqual(60);
-      });
+    it("returns the lowest common multiple", () => {
+      expect(Numbers.lowestCommonMultiple([45, 30])).toEqual(90);
+      expect(Numbers.lowestCommonMultiple([3, 4, 1, 6, 2, 5])).toEqual(60);
+    });
   });
 });
 
@@ -43,10 +43,10 @@ describe("maxNum", () => {
   });
   describe("when array is empty", () => {
     it("throws an error", () => {
-      expect(() => { Numbers.maxNum([]) }).toThrowError("[maxNum] invalid argument: array cannot be empty");
-    })
+      expect(() => Numbers.maxNum([])).toThrowError("[maxNum] invalid argument: array cannot be empty");
+    });
   });
-})
+});
 
 describe("primeFactors", () => {
   describe("with a non-prime number", () => {
@@ -73,7 +73,7 @@ describe("primeFactors", () => {
   });
   describe("when the number is negative", () => {
     it("throws an Error", () => {
-      expect(() => { Numbers.primeFactors(-1) }).toThrowError("[primeFactors] invalid arg: num should be positive number");
+      expect(() => Numbers.primeFactors(-1)).toThrowError("[primeFactors] invalid arg: num should be positive number");
     });
   });
 });
@@ -127,14 +127,18 @@ describe("pythagoreanTriplet", () => {
   });
   describe("when n >= m", () => {
     it("throws an Error", () => {
-      expect(() => { Numbers.pythagoreanTriplet(1, 2) }).toThrowError("[pythagoreanTriplet] invalid arg: n must be less than m");
-      expect(() => { Numbers.pythagoreanTriplet(1, 1) }).toThrowError("[pythagoreanTriplet] invalid arg: n must be less than m");
+      expect(() => Numbers.pythagoreanTriplet(1, 2))
+          .toThrowError("[pythagoreanTriplet] invalid arg: n must be less than m");
+      expect(() => Numbers.pythagoreanTriplet(1, 1))
+          .toThrowError("[pythagoreanTriplet] invalid arg: n must be less than m");
     });
   });
   describe("when n or m >= 0", () => {
     it("throws an Error", () => {
-      expect(() => { Numbers.pythagoreanTriplet(0, -1) }).toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
-      expect(() => { Numbers.pythagoreanTriplet(1, 0) }).toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
+      expect(() => Numbers.pythagoreanTriplet(0, -1))
+          .toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
+      expect(() => Numbers.pythagoreanTriplet(1, 0))
+          .toThrowError("[pythagoreanTriplet] invalid arg: parameters must be greater than 0");
     });
   });
 });

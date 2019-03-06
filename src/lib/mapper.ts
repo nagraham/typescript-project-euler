@@ -2,14 +2,14 @@
  * Functions that perform general mapping functions
 */
 
-export function countItems(list: Array<any>): Map<any, number> {
-  let map: Map<any, number> = new Map<any, number>();
-  list.forEach(item => {
+export function countItems(list: any[]): Map<any, number> {
+  const map: Map<any, number> = new Map<any, number>();
+  list.forEach((item) => {
+    let count: number = 1;
     if (map.has(item)) {
-      map.set(item, <number> map.get(item) + 1);
-    } else {
-      map.set(item, 1);
+      count += map.get(item) as number;
     }
+    map.set(item, count);
   });
   return map;
 }

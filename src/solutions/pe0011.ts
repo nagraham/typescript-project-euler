@@ -16,7 +16,7 @@ function largestProductInGrid(numberSequenceAsString: string): number {
     Direction.Right,
     Direction.Down,
     Direction.UpperRight,
-    Direction.LowerRight
+    Direction.LowerRight,
   ];
 
   let product: number = -1;
