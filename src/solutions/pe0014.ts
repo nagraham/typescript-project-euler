@@ -16,7 +16,8 @@ import * as Sequence from "../lib/sequence";
  * - b/c we have to calculate all sequences (which is computationally heavy), why not attempt
  *   to multi-thread it with the "Worker" library?
  *
- * Runs in ~6500ms (unoptimized; compared to my Java solution, which runs in 2000ms)
+ * Runs in ~6500ms (when my laptop is unplugged, lol); ~3000ms (when plugged in)
+ * (compared to my Java solution, which runs in 2000ms)
  */
 function longestCollatzSequence(): [number, number] {
   let max: number = -1;
@@ -33,4 +34,26 @@ function longestCollatzSequence(): [number, number] {
   return [numberWithLongestSequence, max];
 }
 
+/**
+ * This attempt uses a cache for previously calculated sequences, but actually has 30%-50% worse performance
+ *
+ * Runs in ~8500ms (~4500ms when my computer is plugged in)
+ */
+function longestCollatzSequenceAttemptTwo(): [number, number] {
+  let max: number = -1;
+  let numberWithLongestSequence: number = -1;
+  const cachingCollatzFunction: (num: number) => number[] = Sequence.collatzFunc();
+
+  for (let i: number = 2; i <= 1000000; i++) {
+    const len: number = cachingCollatzFunction(i).length;
+    if (max < len) {
+      max = len;
+      numberWithLongestSequence = i;
+    }
+  }
+
+  return [numberWithLongestSequence, max];
+}
+
 printBenchmark(longestCollatzSequence);
+printBenchmark(longestCollatzSequenceAttemptTwo);

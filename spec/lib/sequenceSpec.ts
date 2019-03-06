@@ -16,6 +16,24 @@ describe("collatz", () => {
   });
 });
 
+describe("collatzFunc", () => {
+  it("returns a function that can be used to calculate Collatz sequences", () => {
+    const myCollatzFunc: (num: number) => number[] = Sequence.collatzFunc();
+    expect(myCollatzFunc(13)).toEqual([13, 40, 20, 10, 5, 16, 8, 4, 2, 1]);
+  });
+  // this doesn't test the cache speeds it up; but tests the cache doesn't have a bug
+  it("uses a cache for previously calculated collatz numbers", () => {
+    const myCollatzFunc: (num: number) => number[] = Sequence.collatzFunc();
+    expect(myCollatzFunc(10)).toEqual([10, 5, 16, 8, 4, 2, 1]);
+    expect(myCollatzFunc(13)).toEqual([13, 40, 20, 10, 5, 16, 8, 4, 2, 1]);
+  });
+  it("returns sequence if the number was already passed in", () => {
+    const myCollatzFunc: (num: number) => number[] = Sequence.collatzFunc();
+    expect(myCollatzFunc(10)).toEqual([10, 5, 16, 8, 4, 2, 1]);
+    expect(myCollatzFunc(10)).toEqual([10, 5, 16, 8, 4, 2, 1]);
+  });
+})
+
 describe("fibonacci", () => {
   it("returns array with fibonacci numbers not exceeding 'end' value" , () => {
     expect(Sequence.fibonacci(0, 10)).toEqual([0, 1, 1, 2, 3, 5, 8]);

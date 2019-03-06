@@ -29,6 +29,50 @@ export function collatz(num: number): number[] {
   return sequence;
 }
 
+/**
+ * Returns a function that calculates the Collatz Sequence
+ * based on the given "seed" value. Will cache previously calculated sequences.
+ *
+ * The Collatz Sequence generates numbers based on the following algorithm:
+ *   n → n/2 (n is even)
+ *   n → 3n + 1 (n is odd)
+ *
+ * 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
+ */
+export function collatzFunc(): (num: number) => number[] {
+  return ((collatzCache: Map<number, number[]>) => {
+    return (num: number) => {
+      if (num < 1) {
+        throw new Error("[Sequence.collatz] num must be >= 1");
+      }
+
+      if (collatzCache.has(num)) {
+        return collatzCache.get(num) as number[];
+      }
+
+      let sequence: number[] = [num];
+      const originalNum: number = num;
+      while (num > 1) {
+        if (num % 2 === 0) {
+          num /= 2;
+        } else {
+          num = (num * 3) + 1;
+        }
+
+        if (collatzCache.has(num)) {
+          // using sequence.push(...cache.get()) caused a heap out of memory failure, ha ha
+          sequence = sequence.concat(collatzCache.get(num) as number[]);
+          num = 1;
+        } else {
+          sequence.push(num);
+        }
+      }
+      collatzCache.set(originalNum, sequence);
+      return sequence;
+    }
+  })(new Map<number, number[]>());
+}
+
 // Returns an sequence of fibonacci numbers, calculated from start to end.
 export function fibonacci(start: number, end: number): number[] {
   let a: number = 0;
