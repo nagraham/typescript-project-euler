@@ -39,7 +39,7 @@ export function collatz(num: number): number[] {
  *
  * 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
  */
-export function collatzFunc(): (num: number) => number[] {
+export function collatzCacheFunc(): (num: number) => number[] {
   return ((collatzCache: Map<number, number[]>) => {
     return (num: number) => {
       if (num < 1) {
@@ -52,22 +52,31 @@ export function collatzFunc(): (num: number) => number[] {
 
       let sequence: number[] = [num];
       const originalNum: number = num;
-      while (num > 1) {
-        if (num % 2 === 0) {
-          num /= 2;
-        } else {
-          num = (num * 3) + 1;
-        }
 
+      while (num > 1) {
         if (collatzCache.has(num)) {
-          // using sequence.push(...cache.get()) caused a heap out of memory failure, ha ha
-          sequence = sequence.concat(collatzCache.get(num) as number[]);
-          num = 1;
+          // only store the values calculated up until now (a "chunk" of the sequence)
+          collatzCache.set(originalNum, sequence);
+
+          /*
+           * the current number (this chunk's last number) "points" to the next chunk of the sequence,
+           * and that chunk may point to another chunk, and so on. Follow the "pointers" until num === 1.
+           * This greatly reduces the memory needed, but does not improve compute performance b/c
+           * concat() is still adding elements to a new array.
+           */
+          while (num > 1) {
+            sequence.concat((collatzCache.get(num) as number[]).slice(1));
+            num = sequence[sequence.length - 1];
+          }
         } else {
+          if (num % 2 === 0) {
+            num /= 2;
+          } else {
+            num = (num * 3) + 1;
+          }
           sequence.push(num);
         }
       }
-      collatzCache.set(originalNum, sequence);
       return sequence;
     }
   })(new Map<number, number[]>());

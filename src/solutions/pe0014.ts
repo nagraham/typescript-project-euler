@@ -42,7 +42,7 @@ function longestCollatzSequence(): [number, number] {
 function longestCollatzSequenceAttemptTwo(): [number, number] {
   let max: number = -1;
   let numberWithLongestSequence: number = -1;
-  const cachingCollatzFunction: (num: number) => number[] = Sequence.collatzFunc();
+  const cachingCollatzFunction: (num: number) => number[] = Sequence.collatzCacheFunc();
 
   for (let i: number = 2; i <= 1000000; i++) {
     const len: number = cachingCollatzFunction(i).length;
