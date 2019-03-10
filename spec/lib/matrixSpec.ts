@@ -26,6 +26,17 @@ describe("constructor", () => {
       expect(matrix.get(2, 3)).toEqual(0);
     });
   });
+  describe("when give an Empty array", () => {
+    it("creates a grid of 0s", () => {
+      const matrix: Matrix = new Matrix(3, 2, []);
+      expect(matrix.get(0, 0)).toEqual(0);
+      expect(matrix.get(0, 1)).toEqual(0);
+      expect(matrix.get(1, 0)).toEqual(0);
+      expect(matrix.get(1, 1)).toEqual(0);
+      expect(matrix.get(2, 0)).toEqual(0);
+      expect(matrix.get(2, 1)).toEqual(0);
+    })
+  })
 });
 
 describe("forEach", () => {

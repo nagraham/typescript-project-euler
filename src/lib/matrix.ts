@@ -1,7 +1,7 @@
 import { Direction } from "./direction";
 
 /**
- * An immutable m x n array of numbers
+ * An m x n array of numbers
  */
 export class Matrix {
   private matrix: number[][];
@@ -51,6 +51,10 @@ export class Matrix {
 
   public get(row: number, col: number): number {
     return this.matrix[row][col];
+  }
+
+  public set(row: number, col: number, value: number) {
+    this.matrix[row][col] = value;
   }
 
   /**
