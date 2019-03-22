@@ -50,7 +50,7 @@ export function collatzCacheFunc(): (num: number) => number[] {
         return collatzCache.get(num) as number[];
       }
 
-      let sequence: number[] = [num];
+      const sequence: number[] = [num];
       const originalNum: number = num;
 
       while (num > 1) {
@@ -78,7 +78,7 @@ export function collatzCacheFunc(): (num: number) => number[] {
         }
       }
       return sequence;
-    }
+    };
   })(new Map<number, number[]>());
 }
 

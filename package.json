@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ts-node node_modules/jasmine/bin/jasmine",
-    "lint": "ts-node node_modules/tslint/bin/tslint {src,spec}/*/**{.ts}",
+    "lint": "ts-node node_modules/tslint/bin/tslint {src,spec}/*/**.ts",
     "release": "npm run test && npm run lint"
   },
   "keywords": [],

@@ -7,7 +7,7 @@ import { Point } from "../lib/point";
  * there are exactly 6 routes to the bottom right corner. How many such routes are there through
  * a 20×20 grid?
  *
- * Runs in ~5ms (laptop, unplugged)
+ * Runs in ~2ms (laptop plugged in); ~5ms (unplugged)
  */
 function latticePaths(num: number): number {
   const len: number = num + 1;
@@ -23,7 +23,7 @@ function latticePaths(num: number): number {
 
   function isEdgePoint(p: Point): boolean {
     if (p.getY() >= len || p.getX() >= len) {
-      throw new Error(`Crossed grid boundary unexpectedly at point x=${p.getX()} y=${p.getY()}`)
+      throw new Error(`Crossed grid boundary unexpectedly at point x=${p.getX()} y=${p.getY()}`);
     }
     return p.getY() === len - 1 || p.getX() === len - 1;
   }
@@ -49,8 +49,8 @@ function latticePaths(num: number): number {
     if (isEdgePoint(p)) {
       setPathCount(p, 1);
     } else {
-      let down: Point = downPoint(p);
-      let right: Point = rightPoint(p);
+      const down: Point = downPoint(p);
+      const right: Point = rightPoint(p);
       if (hasPathCount(down) && hasPathCount(right)) {
         setPathCount(p, getPathCount(down) + getPathCount(right));
       } else {

@@ -35,8 +35,8 @@ describe("constructor", () => {
       expect(matrix.get(1, 1)).toEqual(0);
       expect(matrix.get(2, 0)).toEqual(0);
       expect(matrix.get(2, 1)).toEqual(0);
-    })
-  })
+    });
+  });
 });
 
 describe("forEach", () => {

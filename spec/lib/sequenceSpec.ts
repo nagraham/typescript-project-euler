@@ -33,7 +33,7 @@ describe("collatzFunc", () => {
     expect(myCollatzFunc(10)).toEqual([10, 5, 16, 8, 4, 2, 1]);
     expect(myCollatzFunc(10)).toEqual([10, 5, 16, 8, 4, 2, 1]);
   });
-})
+});
 
 describe("fibonacci", () => {
   it("returns array with fibonacci numbers not exceeding 'end' value" , () => {

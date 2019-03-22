@@ -20,4 +20,4 @@ class Point {
   }
 }
 
-export { Point }
+export { Point };
