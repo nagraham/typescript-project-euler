@@ -1,7 +1,7 @@
 /*
  * Functions that perform number/math calculations
 */
-
+import { convertNumberToEnglish } from "./convertNumberToEnglish";
 import * as Mapper from "./mapper";
 import * as Sequence from "./sequence";
 
@@ -198,8 +198,18 @@ export function pythagoreanTriplet(m: number, n: number): Triplet {
 /**
  * Calculates the sum from an array of numbers.
  *
- * @params {Array<number>}
+ * @param {Array<number>}
  */
 export function sum(nums: number[]): number {
   return nums.reduce((reducedSum, num) => reducedSum + num);
+}
+
+/**
+ * Writes a number as a string e.g. 342 => "three hundred and forty-two." This
+ * function can support writing numbers from 0 <= n <= 999,999,999,999,999
+ *
+ * @param {number} num the number to convert
+ */
+export function toEnglish(num: number): string {
+  return convertNumberToEnglish(num);
 }

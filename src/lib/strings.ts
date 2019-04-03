@@ -3,6 +3,24 @@
 */
 
 /**
+ * Returns the count of values in a string matching the regular expression.
+ *
+ * The regular expression is optional, and will match on any character (although
+ * it would be silly to use this function without a RegExp parameter b/c it would
+ * be a worse performing version of String.length).
+ *
+ * @param {string} str the string to get a count for
+ * @param {RegExp} regex the regular expression used for matching (default: any character)
+ */
+export function count(str: string, regex = new RegExp(".")): number {
+  let cnt = 0;
+  for (const c of str) {
+    cnt += regex.test(c) ? 1 : 0;
+  }
+  return cnt;
+}
+
+/**
  * Determines if the given string is a palindrome. Single-character and empty
  * strings will return true.
  */

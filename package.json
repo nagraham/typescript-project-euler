@@ -4,9 +4,10 @@
   "description": "Project Euler problem solutions with TypeScript",
   "main": "index.js",
   "scripts": {
+    "clean": "./cleanfiles.sh",
     "test": "ts-node node_modules/jasmine/bin/jasmine",
     "lint": "ts-node node_modules/tslint/bin/tslint {src,spec}/*/**.ts",
-    "release": "npm run test && npm run lint"
+    "release": "npm run clean && npm run test && npm run lint"
   },
   "keywords": [],
   "author": "Alex Graham",

@@ -1,6 +1,30 @@
 import "jasmine";
 import * as Strings from "../../src/lib/strings";
 
+describe("count", () => {
+  const lowercaseRegex: RegExp = new RegExp("[a-z]");
+  describe("and when the whole string contains matching values", () => {
+    it("matches the length", () => {
+      expect(Strings.count("helloworld", lowercaseRegex)).toEqual(10);
+    });
+  });
+  describe("and when the string contains some non-matching characters", () => {
+    it("returns the number of matching characters", () => {
+      expect(Strings.count("H#ll0 W'rld", lowercaseRegex)).toEqual(5);
+    });
+  });
+  describe("and when the string doesn't contain any matching characters", () => {
+    it("returns zero", () => {
+      expect(Strings.count("HELLO WORLD", lowercaseRegex)).toEqual(0);
+    });
+  });
+  describe("when a regular expression parameter is not provided", () => {
+    it("returns the length of the string", () => {
+      expect(Strings.count("H#ll0 W'rld")).toEqual(11);
+    });
+  });
+});
+
 describe("isPalindrome", () => {
   describe("when the string is a palindrome", () => {
     it("returns true", () => {
